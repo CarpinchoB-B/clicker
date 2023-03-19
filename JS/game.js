@@ -12,8 +12,16 @@ let isMusicOn = false;
 let isTipOn = 0;
 let isAbility = true;
 let increasedMoney = 0;
+let difficult = localStorage.getItem('difficult');
 let increase = [1,5,25,125,625,3125,15625];
 let enemyHealth = [100,300,600,1800,5200,15600,46180,138540,415620,1246860];
+if(difficult == 'hard')
+{
+    for(let i = 0;i < enemyHealth.length;i++)
+    {
+        enemyHealth[i]*=1.5;
+    }
+}
 let healthCurrentEnemy = enemyHealth[0];
 
 const fightArea = document.getElementById("Game");
@@ -32,9 +40,17 @@ const money = document.getElementById('money');
 const enemyForeground = document.getElementById('enemy_img');
 const soundSlider = document.getElementById('soundslider');
 const musicSlider = document.getElementById('musicslider');
+const brightnessWindow = document.getElementById('BrightnessWindow');
+const brightnessSlider = document.getElementById('brightness_slider');
+testDamage.value = enemyHealth[0];
 
 let soundSiderPrevValue;
 let musicSliderPrevValue;
+
+brightnessSlider.addEventListener('change',()=>
+{
+    brightnessWindow.style.backgroundColor = `rgba(0, 0, 0, ${brightnessSlider.value / 100})`;
+})
 
 musicSlider.addEventListener('change',()=>
 {
