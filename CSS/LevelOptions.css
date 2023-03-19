@@ -92,3 +92,23 @@
 #musicslider{
     height: 60px;
 }
+
+#brightness_slider{
+    height: 60px;
+}
+
+#load{
+    position: absolute;
+    width: 60px;
+    background-color: rgb(113, 182, 113);
+    top: 80px;
+    right: 0px;
+}
+
+#save{
+    position: absolute;
+    width: 60px;
+    background-color: rgb(113, 182, 113);
+    top: 100px;
+    right: 0px;
+}
