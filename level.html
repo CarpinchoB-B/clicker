@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="BrightnessWindow"></div>
     <section id="Shop">
         <span id="HeadSpan">Shop</span>
         <div id="Ability1Tip" class="abilityDmgTip">Press Space to use Ability</div>
@@ -147,7 +148,7 @@
                 <div class="options_tip_text">music off/on</div>
                 <img id="musicoff" class="options_icon" src="icons/musicoff.webp">
                 <img id="musicon" class="options_icon" src="icons/music.png">
-                <input id="musicslider" type="range" min="0" max="100" value="30">
+                <input id="musicslider" type="range" min="0" max="100" value="0">
 
             </section>
 
@@ -159,6 +160,12 @@
             </section>
             <section class="Tip">
                 <img id="tip" class="options_icon" src="icons/tip.png">
+                <input type="button" value="Load" id="load">
+                <input type="button" value="Save" id="save">
+            </section>
+            <section class="Brightness">
+                <img class="options_icon" src="icons/brightness.png" >
+                <input id="brightness_slider" type="range" min="0" max="100" value="30">
             </section>
         </section>
     </section>
