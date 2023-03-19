@@ -1,7 +1,7 @@
 "use strict";
 
 export const attack = new Audio("attack.mp3");
-export const music = new Audio("attack.mp3");
+export const music = new Audio("music.mp3");
 export const click = new Audio("click.mp3");
 export const win = new Audio("win.mp3");
 export const death = new Audio("death.mp3");
