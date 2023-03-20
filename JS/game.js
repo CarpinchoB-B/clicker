@@ -2,6 +2,40 @@
 
 import {attack, music, click, win, death, buy, dmg_magic, boost_dmg_magic} from "./sound.js";
 
+const fightArea = document.getElementById("Game");
+const testDamage = document.getElementById("TestDamage");
+const shop = document.getElementById("Shop");
+const shopBuy = document.getElementsByClassName("section_buy");
+const options = document.getElementById("LevelOptions");
+const soundOn = document.getElementById("soundon");
+const soundOff = document.getElementById("soundoff");
+const musicOff = document.getElementById("musicoff");
+const musicOn = document.getElementById("musicon");
+const darktheme = document.getElementById("night");
+const lighttheme = document.getElementById("day");
+const tip = document.getElementById("tip");
+const money = document.getElementById('money');
+const enemyForeground = document.getElementById('enemy_img');
+const soundSlider = document.getElementById('soundslider');
+const musicSlider = document.getElementById('musicslider');
+const brightnessWindow = document.getElementById('BrightnessWindow');
+const brightnessSlider = document.getElementById('brightness_slider');
+const save = document.getElementById('save');
+const load = document.getElementById('load');
+
+const weapons = new Array();
+weapons.push(document.getElementById("WeakSword"));
+weapons.push(document.getElementById("Sword"));
+weapons.push(document.getElementById("StrongSword"));
+weapons.push(document.getElementById("WeakAxe"));
+weapons.push(document.getElementById("WeakShield"));
+weapons.push(document.getElementById("StrongShield"));
+weapons.push(document.getElementById("StrongAxe"));
+
+
+
+
+
 let damage = 1;
 let enemyNumber = 0;
 let time = 0;
@@ -24,28 +58,54 @@ if(difficult == 'hard')
 }
 let healthCurrentEnemy = enemyHealth[0];
 
-const fightArea = document.getElementById("Game");
-const testDamage = document.getElementById("TestDamage");
-const shop = document.getElementById("Shop");
-const shopBuy = document.getElementsByClassName("section_buy");
-const options = document.getElementById("LevelOptions");
-const soundOn = document.getElementById("soundon");
-const soundOff = document.getElementById("soundoff");
-const musicOff = document.getElementById("musicoff");
-const musicOn = document.getElementById("musicon");
-const darktheme = document.getElementById("night");
-const lighttheme = document.getElementById("day");
-const tip = document.getElementById("tip");
-const money = document.getElementById('money');
-const enemyForeground = document.getElementById('enemy_img');
-const soundSlider = document.getElementById('soundslider');
-const musicSlider = document.getElementById('musicslider');
-const brightnessWindow = document.getElementById('BrightnessWindow');
-const brightnessSlider = document.getElementById('brightness_slider');
 testDamage.value = enemyHealth[0];
-
 let soundSiderPrevValue;
 let musicSliderPrevValue;
+let myMoney = money.textContent;
+
+const Enemies = new Array();
+Enemies.push('enemy/1.webp');
+Enemies.push('enemy/2.webp');
+Enemies.push('enemy/3.webp');
+Enemies.push('enemy/4.webp');
+Enemies.push('enemy/5.webp');
+Enemies.push('enemy/6.webp');
+Enemies.push('enemy/7.webp');
+Enemies.push('enemy/8.webp');
+Enemies.push('enemy/9.webp');
+Enemies.push('enemy/10.webp');
+
+
+load.addEventListener('click',()=>
+{
+    testDamage.value = localStorage.getItem('enemyHealth');  
+    console.log(testDamage.value);
+    money.textContent = localStorage.getItem('money');
+    myMoney = localStorage.getItem('money');
+    enemyNumber = localStorage.getItem('enemy');
+    enemyForeground.src  = Enemies[enemyNumber];
+    weapons[0].textContent = parseInt(localStorage.getItem('WeakSword'),10);
+    weapons[1].textContent = parseInt(localStorage.getItem('Sword'),10);
+    weapons[2].textContent = parseInt(localStorage.getItem('StrongSword'),10);
+    weapons[3].textContent = parseInt(localStorage.getItem('WeakAxe'),10);
+    weapons[4].textContent = parseInt(localStorage.getItem('WeakShield'),10);
+    weapons[5].textContent = parseInt(localStorage.getItem('StrongShield'),10);
+    weapons[6].textContent = parseInt(localStorage.getItem('StrongAxe'),10);
+});
+
+save.addEventListener('click',()=>
+{
+    localStorage.setItem('enemyHealth',testDamage.value);
+    localStorage.setItem('money',myMoney);
+    localStorage.setItem('enemy',enemyNumber);
+    localStorage.setItem('WeakSword',weapons[0].textContent);
+    localStorage.setItem('Sword',weapons[1].textContent);
+    localStorage.setItem('StrongSword',weapons[2].textContent);
+    localStorage.setItem('WeakAxe',weapons[3].textContent);
+    localStorage.setItem('WeakShield',weapons[4].textContent);
+    localStorage.setItem('StrongShield',weapons[5].textContent);
+    localStorage.setItem('StrongAxe',weapons[6].textContent);
+});
 
 brightnessSlider.addEventListener('change',()=>
 {
@@ -80,19 +140,6 @@ soundSlider.addEventListener('change',()=>
     }
 })
 
-let myMoney = money.textContent;
-
-const Enemies = new Array();
-Enemies.push('enemy/1.webp');
-Enemies.push('enemy/2.webp');
-Enemies.push('enemy/3.webp');
-Enemies.push('enemy/4.webp');
-Enemies.push('enemy/5.webp');
-Enemies.push('enemy/6.webp');
-Enemies.push('enemy/7.webp');
-Enemies.push('enemy/8.webp');
-Enemies.push('enemy/9.webp');
-Enemies.push('enemy/10.webp');
 
 function IncreaseMoney()
 {
@@ -121,14 +168,6 @@ const upgradeTipText = document.getElementsByClassName("upgradeTipText");
 const optionTipsArrow = document.getElementsByClassName("options_arrow");
 const optionTipsText = document.getElementsByClassName("options_tip_text");
 
-const weapons = new Array();
-weapons.push(document.getElementById("WeakSword"));
-weapons.push(document.getElementById("Sword"));
-weapons.push(document.getElementById("StrongSword"));
-weapons.push(document.getElementById("WeakAxe"));
-weapons.push(document.getElementById("WeakShield"));
-weapons.push(document.getElementById("StrongShield"));
-weapons.push(document.getElementById("StrongAxe"));
 
 tip.addEventListener("click",()=>
 {
