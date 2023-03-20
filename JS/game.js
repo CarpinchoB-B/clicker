@@ -32,10 +32,6 @@ weapons.push(document.getElementById("WeakShield"));
 weapons.push(document.getElementById("StrongShield"));
 weapons.push(document.getElementById("StrongAxe"));
 
-
-
-
-
 let damage = 1;
 let enemyNumber = 0;
 let time = 0;
@@ -76,35 +72,52 @@ Enemies.push('enemy/9.webp');
 Enemies.push('enemy/10.webp');
 
 
+if(localStorage.getItem('currentSave') == 'First' || localStorage.getItem('currentSave') == 'Second' || localStorage.getItem('currentSave') == 'Third')
+{
+    testDamage.value = localStorage.getItem('currentEnemyHealth');  
+    console.log(testDamage.value);
+    money.textContent = localStorage.getItem('currentMoney');
+    myMoney = localStorage.getItem('currentMoney');
+    enemyNumber = localStorage.getItem('currentEnemy');
+    enemyForeground.src  = Enemies[enemyNumber];
+    weapons[0].textContent = parseInt(localStorage.getItem('currentWeakSword'),10);
+    weapons[1].textContent = parseInt(localStorage.getItem('currentSword'),10);
+    weapons[2].textContent = parseInt(localStorage.getItem('currentStrongSword'),10);
+    weapons[3].textContent = parseInt(localStorage.getItem('currentWeakAxe'),10);
+    weapons[4].textContent = parseInt(localStorage.getItem('currentWeakShield'),10);
+    weapons[5].textContent = parseInt(localStorage.getItem('currentStrongShield'),10);
+    weapons[6].textContent = parseInt(localStorage.getItem('currentStrongAxe'),10);
+}
+
 load.addEventListener('click',()=>
 {
-    testDamage.value = localStorage.getItem('enemyHealth');  
+    testDamage.value = localStorage.getItem('currentEnemyHealth');  
     console.log(testDamage.value);
-    money.textContent = localStorage.getItem('money');
-    myMoney = localStorage.getItem('money');
-    enemyNumber = localStorage.getItem('enemy');
+    money.textContent = localStorage.getItem('currentMoney');
+    myMoney = localStorage.getItem('currentMoney');
+    enemyNumber = localStorage.getItem('currentEnemy');
     enemyForeground.src  = Enemies[enemyNumber];
-    weapons[0].textContent = parseInt(localStorage.getItem('WeakSword'),10);
-    weapons[1].textContent = parseInt(localStorage.getItem('Sword'),10);
-    weapons[2].textContent = parseInt(localStorage.getItem('StrongSword'),10);
-    weapons[3].textContent = parseInt(localStorage.getItem('WeakAxe'),10);
-    weapons[4].textContent = parseInt(localStorage.getItem('WeakShield'),10);
-    weapons[5].textContent = parseInt(localStorage.getItem('StrongShield'),10);
-    weapons[6].textContent = parseInt(localStorage.getItem('StrongAxe'),10);
+    weapons[0].textContent = parseInt(localStorage.getItem('currentWeakSword'),10);
+    weapons[1].textContent = parseInt(localStorage.getItem('currentSword'),10);
+    weapons[2].textContent = parseInt(localStorage.getItem('currentStrongSword'),10);
+    weapons[3].textContent = parseInt(localStorage.getItem('currentWeakAxe'),10);
+    weapons[4].textContent = parseInt(localStorage.getItem('currentWeakShield'),10);
+    weapons[5].textContent = parseInt(localStorage.getItem('currentStrongShield'),10);
+    weapons[6].textContent = parseInt(localStorage.getItem('currentStrongAxe'),10);
 });
 
 save.addEventListener('click',()=>
 {
-    localStorage.setItem('enemyHealth',testDamage.value);
-    localStorage.setItem('money',myMoney);
-    localStorage.setItem('enemy',enemyNumber);
-    localStorage.setItem('WeakSword',weapons[0].textContent);
-    localStorage.setItem('Sword',weapons[1].textContent);
-    localStorage.setItem('StrongSword',weapons[2].textContent);
-    localStorage.setItem('WeakAxe',weapons[3].textContent);
-    localStorage.setItem('WeakShield',weapons[4].textContent);
-    localStorage.setItem('StrongShield',weapons[5].textContent);
-    localStorage.setItem('StrongAxe',weapons[6].textContent);
+    localStorage.setItem('currentEnemyHealth',testDamage.value);
+    localStorage.setItem('currentMoney',myMoney);
+    localStorage.setItem('currentEnemy',enemyNumber);
+    localStorage.setItem('currentWeakSword',weapons[0].textContent);
+    localStorage.setItem('currentSword',weapons[1].textContent);
+    localStorage.setItem('currentStrongSword',weapons[2].textContent);
+    localStorage.setItem('currentWeakAxe',weapons[3].textContent);
+    localStorage.setItem('currentWeakShield',weapons[4].textContent);
+    localStorage.setItem('currentStrongShield',weapons[5].textContent);
+    localStorage.setItem('currentStrongAxe',weapons[6].textContent);
 });
 
 brightnessSlider.addEventListener('change',()=>
