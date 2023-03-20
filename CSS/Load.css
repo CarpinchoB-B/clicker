@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "Font";
+    src: url("../fonts/font.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body,html
+{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+    font-family: "Font";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(232, 232, 232);
+    background: linear-gradient(153deg, rgba(232, 232, 232, 1) 7%, rgba(195, 195, 195, 1) 47%, rgba(232, 232, 232, 1) 82%);
+}
+
+.Box{
+    height: 400px;
+    width: 30%;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.SaveBox{
+    border: 3px solid black;
+    width: 90%;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+}
+
+.BigBox{
+    width: 65%;
+    height: 80px;
+    margin: 5px;
+    
+}
+
+.SmallBox{
+    width: 30%;
+    height: 80px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    
+}
+
+.SaveButton{
+    width: 80%;
+    height: 25px;
+    margin-top: 15px;
+    background-color: azure;
+    font-family: "Font";
+}
+.SaveButton:hover{
+    cursor: pointer;
+}
+
+.LoadButton{
+    width: 80%;
+    height: 25px;
+    background-color: azure;
+    font-family: "Font";
+}
+
+.LoadButton:hover{
+    cursor: pointer;
+}
